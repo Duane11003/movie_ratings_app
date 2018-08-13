@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.set('port', (process.env.PORT || 5000))
+
 
 app.get("/", function(req, res){
     res.render("landing");
@@ -25,6 +27,6 @@ app.get("/", function(req, res){
 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("movie ratings app server has started")
-})
+app.listen(app.get('port'), function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
+  })
